@@ -1,0 +1,9 @@
+﻿Thực nghiệm,Faithfulness Score,Faithfulness Δ,Answer Relevancy Score,Answer Relevancy Δ,Context Precision Score,Context Precision Δ,Context Recall Score,Context Recall Δ
+Baseline,0.855,0.0,0.5751,0.0,0.8873,0.0,0.6886,0.0
+v1 Semantic Chunking,0.8548,-0.0002,0.6564,0.0813,0.9134,0.0261,0.7686,0.08
+v2 Query Decomposition,0.8966,0.0416,0.7134,0.1383,0.8395,-0.0478,0.7905,0.1019
+v3 Hybrid Search (RRF),0.8589,0.0039,0.6261,0.051,0.9199,0.0326,0.6814,-0.0072
+v4 Cross-Encoder Reranking,0.9112,0.0562,0.6629,0.0878,0.933,0.0457,0.7673,0.0787
+v5 CoT + Citation,0.7897,-0.0653,0.6588,0.0837,0.9085,0.0212,0.6846,-0.004
+Full Pipeline (v1+v2+v3+v4),0.9021,0.0471,0.6784,0.1033,0.9232,0.0359,0.751,0.0624
+Combo v1+v2+v4 (Semantic+Decompose+Rerank),0.8705,0.0155,0.6389,0.0638,0.933,0.0457,0.7863,0.0977

@@ -1,0 +1,44 @@
+# --- 1. Lõi LangChain & OpenAI ---
+langchain>=0.2.0,<0.4.0
+langchain-core>=0.2.0,<0.4.0
+langchain-community>=0.1.0,<0.4.0
+langchain-openai>=0.1.0,<0.4.0
+openai>=1.0.0,<2.0.0
+
+# --- 2. Xử lý Dữ liệu & Cắt Chunk ---
+pypdf>=4.0.0
+pymupdf4llm>=0.0.17
+langchain-text-splitters>=0.2.0,<0.4.0
+
+# --- 3. Embedding (BGE-M3 trên GPU) + Reranker (Qwen3-Reranker-0.6B) ---
+sentence-transformers>=3.0.0,<4.0.0
+langchain-huggingface>=0.0.1,<0.2.0
+# PyTorch — cần cài đúng CUDA build, KHÔNG dùng pip install torch thông thường.
+# Cài đặt theo hướng dẫn: https://pytorch.org/get-started/locally/
+# Ví dụ CUDA 12.4 (khớp với dự án này):
+#   pip install torch==2.6.0 --index-url https://download.pytorch.org/whl/cu124
+torch==2.6.0
+transformers>=4.51.0,<5.0.0
+
+# --- 4. Vector Database (Qdrant) ---
+qdrant-client>=1.9.0,<2.0.0
+langchain-qdrant>=0.1.0,<0.3.0
+
+# --- 5. Ragas & Chấm điểm ---
+ragas>=0.2.0,<0.3.0
+datasets>=2.14.0,<4.0.0
+
+# --- 6. Phase 3 Upgrades ---
+rank_bm25>=0.2.2
+underthesea>=6.8.0
+
+# --- 7. Tiện ích & Trực quan hóa ---
+pandas>=2.0.0,<3.0.0
+matplotlib>=3.7.0,<4.0.0
+seaborn>=0.12.0,<0.14.0
+tiktoken>=0.7.0
+nest_asyncio>=1.6.0
+python-dotenv>=1.0.0
+
+# --- 8. App ---
+streamlit>=1.35.0
