@@ -1,4 +1,4 @@
-# RAG Optimization Framework
+<h1 align="center">RAG Optimization Framework</h1>
 
 <div align="center">
 
