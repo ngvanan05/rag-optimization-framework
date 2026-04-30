@@ -15,6 +15,9 @@ __pypackages__/
 # Vector DB data
 database/
 
+# Raw documents (không commit dữ liệu nội bộ)
+data/data_raw/
+
 # Output files — chỉ ignore intermediate/heavy files, giữ lại kết quả thực nghiệm
 outputs/**/__pycache__/
 outputs/**/*.pkl
