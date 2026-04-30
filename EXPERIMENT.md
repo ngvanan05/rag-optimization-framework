@@ -93,36 +93,36 @@ Detailed results and analysis for all RAG variants evaluated on the Vietnamese d
 Biểu đồ chi tiết từng variant (xuất từ `run_eval.py`):
 
 ### Baseline
-![Baseline RAGAS Report](https://raw.githubusercontent.com/annguyen-me/RAGOptima/main/outputs/images/rag_inference_results_RAGAS_Report_page-0001.jpg)
+![Baseline RAGAS Report](https://gitlab.com/vanan-portfolio/rag-optimization-framework/-/raw/main/outputs/images/rag_inference_results_RAGAS_Report_page-0001.jpg)
 
 ### v1 — Semantic Chunking
-![v1 RAGAS Report](https://raw.githubusercontent.com/annguyen-me/RAGOptima/main/outputs/images/v1_semantic_chunker_RAGAS_Report_page-0001.jpg)
+![v1 RAGAS Report](https://gitlab.com/vanan-portfolio/rag-optimization-framework/-/raw/main/outputs/images/v1_semantic_chunker_RAGAS_Report_page-0001.jpg)
 
 ### v2 — Query Decomposition
-![v2 RAGAS Report](https://raw.githubusercontent.com/annguyen-me/RAGOptima/main/outputs/images/v2_query_decomposition_RAGAS_Report_page-0001.jpg)
+![v2 RAGAS Report](https://gitlab.com/vanan-portfolio/rag-optimization-framework/-/raw/main/outputs/images/v2_query_decomposition_RAGAS_Report_page-0001.jpg)
 
 ### v3 — Hybrid Search (RRF)
-![v3 RAGAS Report](https://raw.githubusercontent.com/annguyen-me/RAGOptima/main/outputs/images/v3_hybrid_search_RAGAS_Report_page-0001.jpg)
+![v3 RAGAS Report](https://gitlab.com/vanan-portfolio/rag-optimization-framework/-/raw/main/outputs/images/v3_hybrid_search_RAGAS_Report_page-0001.jpg)
 
 ### v4 — Cross-Encoder Reranking
-![v4 RAGAS Report](https://raw.githubusercontent.com/annguyen-me/RAGOptima/main/outputs/images/v4_reranking_RAGAS_Report_page-0001.jpg)
+![v4 RAGAS Report](https://gitlab.com/vanan-portfolio/rag-optimization-framework/-/raw/main/outputs/images/v4_reranking_RAGAS_Report_page-0001.jpg)
 
 ### v5 — CoT + Citation
-![v5 RAGAS Report](https://raw.githubusercontent.com/annguyen-me/RAGOptima/main/outputs/images/v5_cot_citation_RAGAS_Report_page-0001.jpg)
+![v5 RAGAS Report](https://gitlab.com/vanan-portfolio/rag-optimization-framework/-/raw/main/outputs/images/v5_cot_citation_RAGAS_Report_page-0001.jpg)
 
 ### Full Pipeline (v1+v2+v3+v4)
-![Full Pipeline RAGAS Report](https://raw.githubusercontent.com/annguyen-me/RAGOptima/main/outputs/images/full_pipeline_results_RAGAS_Report_page-0001.jpg)
+![Full Pipeline RAGAS Report](https://gitlab.com/vanan-portfolio/rag-optimization-framework/-/raw/main/outputs/images/full_pipeline_results_RAGAS_Report_page-0001.jpg)
 
 ### Combo v1+v2+v4
-![Combo v1+v2+v4 RAGAS Report](https://raw.githubusercontent.com/annguyen-me/RAGOptima/main/outputs/images/semantic_decompose_rerank_results_RAGAS_Report_page-0001.jpg)
+![Combo v1+v2+v4 RAGAS Report](https://gitlab.com/vanan-portfolio/rag-optimization-framework/-/raw/main/outputs/images/semantic_decompose_rerank_results_RAGAS_Report_page-0001.jpg)
 
 ---
 
 ## Comparison
 
-![Bảng so sánh điểm RAGAS — tất cả variants](https://raw.githubusercontent.com/annguyen-me/RAGOptima/main/outputs/images/comparison_report_page-0001.jpg)
+![Bảng so sánh điểm RAGAS — tất cả variants](https://gitlab.com/vanan-portfolio/rag-optimization-framework/-/raw/main/outputs/images/comparison_report_page-0001.jpg)
 
-![Biểu đồ bar chart 4 metrics](https://raw.githubusercontent.com/annguyen-me/RAGOptima/main/outputs/images/comparison_report_page-0002.jpg)
+![Biểu đồ bar chart 4 metrics](https://gitlab.com/vanan-portfolio/rag-optimization-framework/-/raw/main/outputs/images/comparison_report_page-0002.jpg)
 
 ---
 
