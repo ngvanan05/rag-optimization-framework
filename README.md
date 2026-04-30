@@ -91,8 +91,8 @@ Tài liệu PDF/DOCX
 ### 1. Clone repository
 
 ```bash
-git clone https://github.com/annguyen-me/RAGOptima.git
-cd RAGOptima
+git clone https://github.com/ngvanan05/rag-optimization-framework.git
+cd rag-optimization-framework
 ```
 
 ### 2. Tạo môi trường ảo
@@ -153,7 +153,6 @@ RAGOptima/
 ├── .env                            # API keys (không commit)
 │
 ├── data/
-│   ├── data_raw/                   # 25 file PDF/DOCX tài liệu gốc
 │   ├── markdown/                   # PDF đã convert sang Markdown
 │   └── ragas_testset.json          # Testset 50 câu hỏi (sinh bởi Phase 1)
 │
@@ -344,7 +343,7 @@ streamlit run app.py
 
 Truy cập: `http://localhost:8501`
 
-![Giao diện Streamlit — nhập câu hỏi, xem câu trả lời kèm nguồn tham khảo](https://gitlab.com/vanan-portfolio/rag-optimization-framework/-/raw/main/outputs/images/DEMO.png)
+![Giao diện Streamlit — nhập câu hỏi, xem câu trả lời kèm nguồn tham khảo](https://raw.githubusercontent.com/ngvanan05/rag-optimization-framework/main/outputs/images/DEMO.png)
 
 **Tính năng:**
 - Nhập câu hỏi → tự động phân tách thành sub-questions (v2)
@@ -356,9 +355,9 @@ Truy cập: `http://localhost:8501`
 
 ## Kết quả thực nghiệm
 
-![Bảng so sánh điểm RAGAS](https://gitlab.com/vanan-portfolio/rag-optimization-framework/-/raw/main/outputs/images/comparison_report_page-0001.jpg)
+![Bảng so sánh điểm RAGAS](https://raw.githubusercontent.com/ngvanan05/rag-optimization-framework/main/outputs/images/comparison_report_page-0001.jpg)
 
-![Biểu đồ so sánh 4 metrics](https://gitlab.com/vanan-portfolio/rag-optimization-framework/-/raw/main/outputs/images/comparison_report_page-0002.jpg)
+![Biểu đồ so sánh 4 metrics](https://raw.githubusercontent.com/ngvanan05/rag-optimization-framework/main/outputs/images/comparison_report_page-0002.jpg)
 
 | Variant | Faithfulness | Answer Relevancy | Context Precision | Context Recall |
 |---------|:-----------:|:----------------:|:-----------------:|:--------------:|
