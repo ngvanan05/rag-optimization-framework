@@ -1,7 +1,7 @@
-# RAG Optimization Framework
+
 
 <div align="center">
-
+<h1>RAG Optimization Framework</h1>
 ![Python](https://img.shields.io/badge/python-3.10+-blue.svg)
 ![License](https://img.shields.io/badge/license-MIT-green.svg)
 ![PyTorch](https://img.shields.io/badge/PyTorch-2.6.0-red.svg)
