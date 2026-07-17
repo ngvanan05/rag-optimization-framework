@@ -14,16 +14,16 @@ import argparse
 import pandas as pd
 from dotenv import load_dotenv
 
-from config import (
+from phase2_baseline.config import (
     SEED, LLM_MODEL, BATCH_SIZE, DATA_DIR, TESTSET_PATH,
     CHUNK_SIZE, CHUNK_OVERLAP, QDRANT_URL, COLLECTION_NAME,
     TOP_K, set_global_seed
 )
-from models import get_llm, get_embeddings
-from stage1_indexing.loader import DocumentLoader
-from stage1_indexing.vector_db import TextSplitter, VectorDB
-from stage2_retrieval.search_engine import SearchEngine
-from stage3_generation.rag_chain import RAGChain
+from phase2_baseline.models import get_llm, get_embeddings
+from phase2_baseline.stage1_indexing.loader import DocumentLoader
+from phase2_baseline.stage1_indexing.vector_db import TextSplitter, VectorDB
+from phase2_baseline.stage2_retrieval.search_engine import SearchEngine
+from phase2_baseline.stage3_generation.rag_chain import RAGChain
 
 
 # ---------------------------------------------------------------------------

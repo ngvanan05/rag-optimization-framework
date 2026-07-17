@@ -4,17 +4,13 @@ Combines Context + LLM to generate final answers.
 Merged logic from: rag_pipeline.py (BatchRAG + FocusedAnswerParser)
 """
 import re
-import asyncio
-from tqdm import tqdm
 from typing import List
 
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.runnables import RunnablePassthrough
-from langchain_core.messages import HumanMessage
 
-import sys, pathlib
-sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent.parent))
-from stage3_generation.prompt_templates import BASELINE_PROMPT
+from phase2_baseline.async_utils import run_prompts_in_batches
+from phase2_baseline.stage3_generation.prompt_templates import BASELINE_PROMPT
 
 
 # ---------------------------------------------------------------------------
@@ -63,7 +59,7 @@ class RAGChain:
         """
         Create LCEL chain for single question processing.
         """
-        from stage2_retrieval.search_engine import SearchEngine
+        from phase2_baseline.stage2_retrieval.search_engine import SearchEngine
         engine = SearchEngine(retriever)
 
         def format_docs(docs):
@@ -78,22 +74,8 @@ class RAGChain:
 
     def batch_generate(self, prompts: List[str]) -> List[str]:
         """Batch inference via async gather — uses a separate event loop per batch."""
-        async def _run_batch(batch_prompts):
-            messages_batch = [[HumanMessage(content=p)] for p in batch_prompts]
-            tasks = [self.llm.ainvoke(msgs) for msgs in messages_batch]
-            return await asyncio.gather(*tasks)
-
-        all_answers = []
-        for i in tqdm(range(0, len(prompts), self.batch_size), desc="Generating answers"):
-            batch = prompts[i:i + self.batch_size]
-            loop  = asyncio.new_event_loop()
-            try:
-                results = loop.run_until_complete(_run_batch(batch))
-            finally:
-                loop.close()
-            for result in results:
-                all_answers.append(self.parser.parse(result.content))
-        return all_answers
+        responses = run_prompts_in_batches(self.llm, prompts, self.batch_size, desc="Generating answers")
+        return [self.parser.parse(response.content) for response in responses]
 
     def batch_answer(self, retrieved_data: List[dict]) -> List[dict]:
         """

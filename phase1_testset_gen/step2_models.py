@@ -16,7 +16,7 @@ import torch
 from dotenv import load_dotenv
 load_dotenv()
 
-from config import LLM_MODEL, EMBEDDING_MODEL
+from phase1_testset_gen.config import LLM_MODEL, EMBEDDING_MODEL
 
 
 def _patch_langchain_llm_wrapper():

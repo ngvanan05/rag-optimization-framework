@@ -9,15 +9,14 @@ Output: JSON → run_step2_rerank_generate.py
 Run from project root:
     python phase3_upgrades/semantic_decompose_rerank/run_step1_chunk_retrieve.py
 """
-import sys, json, pathlib
+import json, pathlib
 import pandas as pd
 from dotenv import load_dotenv
 from tqdm import tqdm
 
-ROOT = pathlib.Path(__file__).resolve().parent.parent.parent
-sys.path.insert(0, str(ROOT))
-sys.path.insert(0, str(ROOT / "phase2_baseline"))
 load_dotenv()
+
+ROOT = pathlib.Path(__file__).resolve().parent.parent.parent
 
 from phase2_baseline.config import (
     SEED, DATA_DIR, TESTSET_PATH,

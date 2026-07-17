@@ -10,7 +10,7 @@ from pathlib import Path
 import pymupdf4llm
 from langchain_community.document_loaders import DirectoryLoader, TextLoader, Docx2txtLoader
 
-from config import DATA_DIR, MARKDOWN_DIR
+from phase1_testset_gen.config import DATA_DIR, MARKDOWN_DIR
 
 
 def convert_pdfs_to_markdown(pdf_dir: str = DATA_DIR, output_dir: str = MARKDOWN_DIR) -> str:

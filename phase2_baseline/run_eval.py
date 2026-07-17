@@ -52,8 +52,8 @@ from ragas.metrics import faithfulness, answer_relevancy, context_precision, con
 from ragas.embeddings import LangchainEmbeddingsWrapper
 from ragas.llms import LangchainLLMWrapper
 
-from config import SEED, EVAL_SAMPLE_SIZE, EVAL_MAX_WORKERS, EVAL_TIMEOUT, LLM_MODEL
-from models import get_embeddings, get_llm
+from phase2_baseline.config import SEED, EVAL_SAMPLE_SIZE, EVAL_MAX_WORKERS, EVAL_TIMEOUT, LLM_MODEL
+from phase2_baseline.models import get_embeddings, get_llm
 
 
 # ---------------------------------------------------------------------------

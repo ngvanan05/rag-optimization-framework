@@ -88,9 +88,7 @@ class DocumentLoader:
 
 
 if __name__ == "__main__":
-    import sys
-    sys.path.append("..")
-    from config import DATA_DIR
+    from phase2_baseline.config import DATA_DIR
 
     loader = DocumentLoader()
     docs = loader.load_dir(DATA_DIR)

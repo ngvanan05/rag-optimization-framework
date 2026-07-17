@@ -10,17 +10,16 @@ Output: CSV ready for RAGAS eval
 Run from project root (after step1 completes):
     python phase3_upgrades/full_pipeline/run_step2_rerank_generate.py
 """
-import sys, json, time, pathlib, asyncio
+import json, time, asyncio, pathlib
 import pandas as pd
 from dotenv import load_dotenv
 from tqdm import tqdm
 from langchain_core.documents import Document
 from langchain_core.messages import HumanMessage
 
-ROOT = pathlib.Path(__file__).resolve().parent.parent.parent
-sys.path.insert(0, str(ROOT))
-sys.path.insert(0, str(ROOT / "phase2_baseline"))
 load_dotenv()
+
+ROOT = pathlib.Path(__file__).resolve().parent.parent.parent
 
 from phase2_baseline.config import SEED, LLM_MODEL, BATCH_SIZE, TOP_K, set_global_seed
 from phase2_baseline.models import get_llm

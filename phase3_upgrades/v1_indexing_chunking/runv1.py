@@ -6,14 +6,13 @@ The rest of the pipeline remains identical to baseline.
 Run from project root:
     python phase3_upgrades/v1_indexing_chunking/runv1.py
 """
-import os, sys, time, json, pathlib
+import os, time, json, pathlib
 import pandas as pd
 from dotenv import load_dotenv
 
-ROOT = pathlib.Path(__file__).resolve().parent.parent.parent
-sys.path.insert(0, str(ROOT))
-sys.path.insert(0, str(ROOT / "phase2_baseline"))
 load_dotenv()
+
+ROOT = pathlib.Path(__file__).resolve().parent.parent.parent
 
 from phase2_baseline.config import (
     SEED, LLM_MODEL, BATCH_SIZE, DATA_DIR, TESTSET_PATH,

@@ -17,7 +17,7 @@ load_dotenv()
 
 from ragas.testset import TestsetGenerator
 
-from config import TESTSET_SIZE, TESTSET_PATH
+from phase1_testset_gen.config import TESTSET_SIZE, TESTSET_PATH
 
 
 def build_generator(llm_wrapper, embedding_wrapper) -> TestsetGenerator:

@@ -161,8 +161,6 @@ class HybridRetriever(BaseRetriever):
 
 
 if __name__ == "__main__":
-    import sys
-    sys.path.insert(0, ".")
     from phase2_baseline.stage1_indexing.loader import DocumentLoader
     from phase2_baseline.stage1_indexing.vector_db import TextSplitter
     from phase2_baseline.models import get_embeddings

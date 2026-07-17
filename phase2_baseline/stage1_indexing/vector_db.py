@@ -84,11 +84,9 @@ class VectorDB:
 
 
 if __name__ == "__main__":
-    import sys
-    sys.path.append("..")
-    from config import DATA_DIR, CHUNK_SIZE, CHUNK_OVERLAP, QDRANT_URL, COLLECTION_NAME
-    from loader import DocumentLoader
-    from models import get_embeddings
+    from phase2_baseline.config import DATA_DIR, CHUNK_SIZE, CHUNK_OVERLAP, QDRANT_URL, COLLECTION_NAME
+    from phase2_baseline.stage1_indexing.loader import DocumentLoader
+    from phase2_baseline.models import get_embeddings
 
     loader   = DocumentLoader()
     splitter = TextSplitter(chunk_size=CHUNK_SIZE, chunk_overlap=CHUNK_OVERLAP)

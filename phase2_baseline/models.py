@@ -2,9 +2,7 @@ import torch
 from langchain_openai import ChatOpenAI
 from langchain_huggingface import HuggingFaceEmbeddings
 
-import sys, pathlib
-sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
-from config import LLM_MODEL, EMBEDDING_MODEL_NAME, SEED
+from phase2_baseline.config import LLM_MODEL, EMBEDDING_MODEL_NAME, SEED
 
 
 def get_llm(

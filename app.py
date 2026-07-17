@@ -5,14 +5,9 @@ Core: v1 (SemanticChunk, đã index) + v2 (QueryDecompose) + v4 (Rerank) + v5 (C
 Chạy:
     streamlit run app.py
 """
-import sys
-import pathlib
 import os
 from dotenv import load_dotenv
 
-ROOT = pathlib.Path(__file__).resolve().parent
-sys.path.insert(0, str(ROOT))
-sys.path.insert(0, str(ROOT / "phase2_baseline"))
 load_dotenv()
 
 # Giảm CUDA memory fragmentation

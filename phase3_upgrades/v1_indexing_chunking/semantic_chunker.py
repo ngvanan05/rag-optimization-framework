@@ -132,8 +132,6 @@ class SemanticChunker:
 
 
 if __name__ == "__main__":
-    import sys
-    sys.path.insert(0, ".")
     from phase2_baseline.stage1_indexing.loader import DocumentLoader
     from phase2_baseline.config import DATA_DIR
 

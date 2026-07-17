@@ -21,10 +21,10 @@ if hasattr(sys.stderr, "reconfigure"):
 from dotenv import load_dotenv
 load_dotenv()
 
-from config import DATA_DIR, MARKDOWN_DIR, TESTSET_PATH, TESTSET_SIZE
-from step1_convert import convert_pdfs_to_markdown, load_all_documents
-from step2_models import get_ragas_wrappers
-from step3_generate import build_generator, generate_and_save
+from phase1_testset_gen.config import DATA_DIR, MARKDOWN_DIR, TESTSET_PATH, TESTSET_SIZE
+from phase1_testset_gen.step1_convert import convert_pdfs_to_markdown, load_all_documents
+from phase1_testset_gen.step2_models import get_ragas_wrappers
+from phase1_testset_gen.step3_generate import build_generator, generate_and_save
 
 
 def main():

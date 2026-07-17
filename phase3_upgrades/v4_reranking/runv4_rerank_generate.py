@@ -5,19 +5,17 @@ Step 2/2: Reads retrieved contexts from runv4_index_retrieve.py, reranks with Qw
 Run from project root (after runv4_index_retrieve.py completes):
     python phase3_upgrades/v4_reranking/runv4_rerank_generate.py
 """
-import sys, json, time, pathlib
+import json, time, pathlib
 import pandas as pd
 from dotenv import load_dotenv
 
-ROOT = pathlib.Path(__file__).resolve().parent.parent.parent
-sys.path.insert(0, str(ROOT))
-sys.path.insert(0, str(ROOT / "phase2_baseline"))
 load_dotenv()
 
 from phase2_baseline.config import SEED, LLM_MODEL, BATCH_SIZE, TOP_K, set_global_seed
 from phase2_baseline.models import get_llm
 from phase3_upgrades.v4_reranking.cross_encoder import CrossEncoderReranker, BatchRAG
 
+ROOT = pathlib.Path(__file__).resolve().parent.parent.parent
 RETRIEVED_PATH = ROOT / "outputs" / "phase3_upgrades" / "v4_retrieved.json"
 OUTPUT_PATH    = ROOT / "outputs" / "phase3_upgrades" / "v4_reranking.csv"
 
@@ -38,7 +36,8 @@ def main():
         retrieved = json.load(f)
     print(f"-> {len(retrieved)} questions.")
 
-    print("\n[2/3] Initializing LLM + Reranker (Qwen3 GPU)...")    llm      = get_llm(model_name=LLM_MODEL, seed=SEED)
+    print("\n[2/3] Initializing LLM + Reranker (Qwen3 GPU)...")
+    llm      = get_llm(model_name=LLM_MODEL, seed=SEED)
     reranker = CrossEncoderReranker(top_k=TOP_K, use_gpu=True)
     generator = BatchRAG(llm, reranker=reranker, batch_size=BATCH_SIZE)
 
