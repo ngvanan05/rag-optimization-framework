@@ -9,9 +9,9 @@ from typing import List
 from tqdm import tqdm
 from transformers import AutoModelForCausalLM, AutoTokenizer
 from langchain_core.prompts import PromptTemplate
-from langchain_core.messages import HumanMessage
 
 # Import các thành phần từ Baseline (Phase 2)
+from phase2_baseline.async_utils import run_prompts_in_batches
 from phase2_baseline.config import BATCH_SIZE, RETRIEVE_K, TOP_K as RERANK_TOP_K
 from phase2_baseline.stage3_generation.rag_chain import FocusedAnswerParser
 
@@ -184,23 +184,8 @@ class BatchRAG:
 
     def batch_generate(self, prompts: List[str]) -> List[str]:
         """Batch inference via async gather — uses a separate event loop per batch."""
-        import asyncio
-
-        async def _run_batch(batch_prompts):
-            messages = [[HumanMessage(content=p)] for p in batch_prompts]
-            return await asyncio.gather(*[self.llm.ainvoke(m) for m in messages])
-
-        all_answers = []
-        for i in tqdm(range(0, len(prompts), self.batch_size), desc="Generating answers"):
-            batch = prompts[i : i + self.batch_size]
-            loop  = asyncio.new_event_loop()
-            try:
-                responses = loop.run_until_complete(_run_batch(batch))
-            finally:
-                loop.close()
-            for resp in responses:
-                all_answers.append(self.answer_parser.parse(resp.content))
-        return all_answers
+        responses = run_prompts_in_batches(self.llm, prompts, self.batch_size, desc="Generating answers")
+        return [self.answer_parser.parse(response.content) for response in responses]
 
     # ------------------------------------------------------------------
     # Full pipeline

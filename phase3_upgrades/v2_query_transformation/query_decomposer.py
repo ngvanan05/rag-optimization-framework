@@ -9,8 +9,8 @@ import re
 from typing import List
 from tqdm import tqdm
 from langchain_core.prompts import PromptTemplate
-from langchain_core.messages import HumanMessage
 
+from phase2_baseline.async_utils import run_prompts_in_batches
 from phase2_baseline.config import BATCH_SIZE
 from phase2_baseline.stage3_generation.rag_chain import FocusedAnswerParser
 
@@ -118,23 +118,8 @@ class DecompositionBatchRAG:
 
     def batch_generate(self, prompts: List[str]) -> List[str]:
         """Batch inference via async gather — uses a separate event loop per batch."""
-        import asyncio
-
-        async def _run_batch(batch_prompts):
-            messages = [[HumanMessage(content=p)] for p in batch_prompts]
-            return await asyncio.gather(*[self.llm.ainvoke(m) for m in messages])
-
-        all_answers = []
-        for i in tqdm(range(0, len(prompts), self.batch_size), desc="Generating (Decomposition)"):
-            batch = prompts[i : i + self.batch_size]
-            loop  = asyncio.new_event_loop()
-            try:
-                responses = loop.run_until_complete(_run_batch(batch))
-            finally:
-                loop.close()
-            for resp in responses:
-                all_answers.append(self.answer_parser.parse(resp.content))
-        return all_answers
+        responses = run_prompts_in_batches(self.llm, prompts, self.batch_size, desc="Generating (Decomposition)")
+        return [self.answer_parser.parse(response.content) for response in responses]
 
     # ------------------------------------------------------------------
     # Full pipeline

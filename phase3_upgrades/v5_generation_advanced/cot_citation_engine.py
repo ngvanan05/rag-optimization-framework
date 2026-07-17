@@ -11,9 +11,9 @@ import re
 from typing import List, Dict
 from tqdm import tqdm
 from langchain_core.prompts import PromptTemplate
-from langchain_core.messages import HumanMessage
 
 # Import config từ Phase 2
+from phase2_baseline.async_utils import run_prompts_in_batches
 from phase2_baseline.config import BATCH_SIZE
 
 # --- PROMPT: CoT + Citation (dùng cho batch inference / Ragas) ---
@@ -145,8 +145,6 @@ class CotCitationEngine:
         docs_list: List[List],
     ) -> List[Dict[str, str]]:
         """Batch inference qua async gather."""
-        import asyncio
-
         prompts = [
             self.prompt.format(
                 context=self._format_docs_for_citation(docs),
@@ -155,18 +153,8 @@ class CotCitationEngine:
             for question, docs in zip(questions, docs_list)
         ]
 
-        async def _run_batch(batch_prompts):
-            messages = [[HumanMessage(content=p)] for p in batch_prompts]
-            return await asyncio.gather(*[self.llm.ainvoke(m) for m in messages])
-
-        all_results = []
-        for i in tqdm(range(0, len(prompts), self.batch_size), desc="CoT+Citation generating"):
-            batch     = prompts[i : i + self.batch_size]
-            responses = asyncio.run(_run_batch(batch))
-            for resp in responses:
-                all_results.append(self._parse_output(resp.content))
-
-        return all_results
+        responses = run_prompts_in_batches(self.llm, prompts, self.batch_size, desc="CoT+Citation generating")
+        return [self._parse_output(response.content) for response in responses]
 
     # ------------------------------------------------------------------
     # Ragas-compatible wrapper
@@ -203,8 +191,6 @@ class CotCitationEngine:
 
 
 if __name__ == "__main__":
-    import sys
-    sys.path.insert(0, ".")
     from dotenv import load_dotenv
     from phase2_baseline.models import get_llm
     from langchain_core.documents import Document
